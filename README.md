@@ -98,15 +98,15 @@ Welcome to Metz Calendar!
 
 Input options (please input number): 
 
-	1) year grid view (input <year> between 1 and 3000)
+1) year grid view (input <year> between 1 and 3000)
 
-	2) next year
+2) next year
 
-	3) previous year
+3) previous year
 
-	4) month in current year (input <month>)
+4) month in current year (input <month>)
 
-	5) quit
+5) quit
 					2016
          January                     February                     March
 Su  Mo  Tu  We  Th  Fr  Sa  Su  Mo  Tu  We  Th  Fr  Sa  Su  Mo  Tu  We  Th  Fr  Sa  
