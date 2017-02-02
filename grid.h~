@@ -1,0 +1,17 @@
+/*
+ * Nicholas Metzger
+ * 8/4/16
+ * grid.h
+ * grid, a struct, definition.
+ */
+
+#ifndef GRID_H
+#define GRID_H
+
+struct Grid
+{
+	int day = -1;
+	bool valid = false;
+};
+
+#endif /*GRID_H*/

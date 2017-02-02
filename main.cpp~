@@ -1,0 +1,165 @@
+/*Nicholas Metzger
+ * 8/4/16
+ * main.cpp
+ * Main file which organizes program.
+ */
+
+#include <iostream>
+using namespace std;
+
+#include <ctype.h>
+#include "calendar.h"
+
+void commands(Calendar*);
+void print_options();
+void year_grid_view(int* year_ptr, bool* first_year_made_ptr,
+				Calendar* cal_ptr);
+void next_year(int *year_ptr, Calendar* cal_ptr);
+void prev_year(int* year_ptr, Calendar* cal_ptr);
+void month_grid_view(int* year_ptr, int* month_ptr, Calendar* cal_ptr);
+
+
+int main()
+{
+	Calendar calendar;
+	
+	commands(&calendar);
+	
+	return 0;	
+}
+
+
+/*
+ * Purpose: Performs desired command.
+ * Parameters: Calendar* cal_ptr is call by reference to calendar data.
+ * Value returned: None (void function).
+ */
+void commands(Calendar* cal_ptr)
+{
+	int command = -1, year = -1, month = -1;
+	bool done = false, first_year_made = false;
+	
+	cout << "Welcome to Metz Calendar!\n\n";
+	while (!done)
+	{
+		print_options();
+		cin >> command;
+		
+		if (command == 1)
+			year_grid_view(&year, &first_year_made, cal_ptr);
+
+		else if (command == 2)
+			next_year(&year, cal_ptr);
+			
+		else if (command == 3)
+			prev_year(&year, cal_ptr);
+		
+		else if (command == 4)
+			month_grid_view(&year, &month, cal_ptr);
+
+		else if (command == 5)
+			done = true;
+		
+		else //not valid command
+			cout << "Not valid command\n";
+		cout << endl;
+	}
+}
+
+
+/*
+ * Purpose: Orchestrates year grid view.
+ * Parameters: int command, string* year_ptr, bool* first_year_made_ptr,
+ * 				Calendar* cal_ptr.
+ * Value returned: None (void function).
+ */
+void year_grid_view(int* year_ptr, bool* first_year_made_ptr,
+				Calendar* cal_ptr)
+{
+		cin >> *year_ptr;
+		
+		if (*year_ptr < 1 || *year_ptr > 3000)
+				cout << "\nOut of bounds\n";
+		else
+		{
+			*first_year_made_ptr = true;
+			cal_ptr->print_year_grid(*year_ptr);
+		}
+}
+
+
+/*
+ * Purpose: Prtins grid view of next year from current year.
+ * Parameters: int *year_ptr. Calendar* cal_ptr.
+ * Value returned: None (void function).
+ */
+void next_year(int *year_ptr, Calendar* cal_ptr)
+{
+	if (*year_ptr == -1)
+		cout << "\nNo current year\n";
+
+	else if (*year_ptr+1 > 3000)
+		cout << "\nOut of bounds\n";
+
+	else
+		cal_ptr->print_year_grid(++(*year_ptr));
+}
+
+
+/*
+ * Purpose: Prints grid view of previous year from current year.
+ * Parameters: int* year_ptr. Calendar* cal_ptr.
+ * Value returned: None (void function).
+ */
+void prev_year(int* year_ptr, Calendar* cal_ptr)
+{
+	if (*year_ptr == -1)
+		cout << "\nNo current year\n";
+	else if (*year_ptr-1 < 0)
+		cout << "\nOut of bounds\n";
+
+	else
+		cal_ptr->print_year_grid(--(*year_ptr));
+}
+
+
+/*
+ * Purpose: Orchestrates month grid view.
+ * Parameters: int* year_ptr, int* month_ptr, Calendar* cal_ptr
+ * Value returned: None (void function).
+ */
+void month_grid_view(int* year_ptr, int* month_ptr, Calendar* cal_ptr)
+{
+	if (*year_ptr == -1)
+		cout << "\nNo current year\n";
+	else
+	{
+		cin >> *month_ptr;
+			
+		if (*year_ptr < 1 || *year_ptr > 3000 || *month_ptr < 1 
+                                                || *month_ptr > 12)
+		{
+			cout << "\nOut of bounds\n";
+		}
+
+		else
+			cal_ptr->print_month_grid(*year_ptr - 1, 
+                                                        *month_ptr - 1);
+	}
+}
+
+
+/*
+ * Purpose: Prints options.
+ * Parameters: None.
+ * Value returned: None (void function).
+ */
+void print_options()
+{
+	cout << "Input options (please input number): \n\n" 
+		<< "\t1) year grid view (input <year> between 1 and 3000)\n\n" 
+		<< "\t2) next year\n\n"
+	   	<< "\t3) previous year\n\n" 
+		<< "\t4) month in current year (input <month>)\n\n"
+	   	<< "\t5) quit\n";
+}
