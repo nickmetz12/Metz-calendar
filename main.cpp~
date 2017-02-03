@@ -29,7 +29,8 @@ int main()
 	Calendar calendar;
 	
 	commands(&calendar);
-	
+
+    calendar.delete_memory();	
 	return 0;	
 }
 
@@ -117,7 +118,7 @@ void prev_year(int* year_ptr, Calendar* cal_ptr)
 {
 	if (*year_ptr == -1)
 		cout << "\nNo current year\n";
-	else if (*year_ptr-1 < 0)
+	else if (*year_ptr < 2)
 		cout << "\nOut of bounds\n";
 
 	else
@@ -158,7 +159,7 @@ void month_grid_view(int* year_ptr, int* month_ptr, Calendar* cal_ptr)
 void print_options()
 {
 	cout << "Input options (please input number): \n\n" 
-		<< "\t1) year grid view (input <year> between 1 and 3000)\n\n" 
+		<< "\t1) year grid view (input <year> > 0)\n\n" 
 		<< "\t2) next year\n\n"
 	   	<< "\t3) previous year\n\n" 
 		<< "\t4) month in current year (input <month>)\n\n"

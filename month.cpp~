@@ -39,12 +39,14 @@ Month::Month()
  * Purpose:Destructor function.
  * Parameters:None.
  * Value returned:None.
- */
+ *
 Month::~Month()
 {
-    deletes_days_grid();
+    delete[] days;
+    delete[] grid;
+//    delete_days_grid();
 }
-
+*/
 /*
 Purpose:    Frees allocated memory for of days and the grid.
 Parameters: None.

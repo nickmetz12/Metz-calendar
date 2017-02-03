@@ -21,24 +21,17 @@ Year::Year()
 }
 
 /*
-Purpose: Destructor function.
-Parameters: None.
-Value returned: None.
-*/
-Year::~Year()
-{
-    delete_months();
-}
-
-/*
 Purpose:    Deletes all allocated memory.
 Parameters: None.
 Returns:    None (void function).
 */
-Year::delete_months()
+void Year::delete_months()
 {
+    cerr << "entered Year::delete_months()\n";
     delete[] months;
+    cerr << "exited Year::delete_months()\n";
 }
+
 
 /*
 Purpose:    Deletes allocated memory of days and grid stored inside a 
@@ -48,7 +41,9 @@ Returns:    None
 */
 void Year::delete_days_grid(int index)
 {
+    cerr << "entered delete_days_grid(int index)\n";
     months[index].delete_days_grid();
+    cerr << "exited delete_days_grid(int index)\n";
 }
 
 /*

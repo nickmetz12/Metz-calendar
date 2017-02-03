@@ -17,7 +17,7 @@ using namespace std;
  */
 Calendar::Calendar()
 {
-    num_years = 2100;
+    num_years = 1;
 	years = new Year[num_years];
 	
 	int count = 1;
@@ -29,17 +29,6 @@ Calendar::Calendar()
 			add_year(i, count_ptr);
 	}
 }
-
-/*
-Purpose: Destructor function.
-Parameters: None.
-Value returned; None.
-*/
-Calendar::~Calendar()
-{
-    delete_memory();
-}
-
 
 /*
 Purpose:    Deletes all allocated memory.
@@ -128,8 +117,16 @@ void Calendar::print_year_grid(int i)
 void Calendar::ensure_cap(int desired_year)
 {
     if (desired_year > num_years)
+    {
+        cerr << "entered if statementCalendar::ensure_cap\n";
         // RECURSIVELY DELETE MEMORY
+        cerr << "\nvalue of num_years: " << num_years << endl << endl;
+        cerr << "about to enter delete_memory()\n";
+        delete_memory();    
+        cerr << "just left from delete_memory()\n";
 
+       
+       
         if (num_years * 2 < desired_year)
         {
             num_years = desired_year * 2;
@@ -138,7 +135,6 @@ void Calendar::ensure_cap(int desired_year)
             num_years = num_years * 2;
         }
         
-        delete_memory();    
         years = new Year[num_years];
 
         int count = 1;
@@ -147,6 +143,7 @@ void Calendar::ensure_cap(int desired_year)
         for (int i = 0; i < num_years; i++)
         {
             add_year(i, count_ptr);    
-        }   
-
+        }  
+        cerr << "exited if statement Calendar::ensure_cap\n";
+    }
 }

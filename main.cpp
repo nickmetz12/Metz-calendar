@@ -29,7 +29,8 @@ int main()
 	Calendar calendar;
 	
 	commands(&calendar);
-	
+
+    calendar.delete_memory();	
 	return 0;	
 }
 
@@ -117,7 +118,7 @@ void prev_year(int* year_ptr, Calendar* cal_ptr)
 {
 	if (*year_ptr == -1)
 		cout << "\nNo current year\n";
-	else if (*year_ptr-1 < 0)
+	else if (*year_ptr < 2)
 		cout << "\nOut of bounds\n";
 
 	else

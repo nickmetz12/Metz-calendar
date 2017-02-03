@@ -16,7 +16,6 @@ class Year
 {
 	public:
 			Year();
-			~Year();
 			void update_year(int, int*);
 			void print_year();
 			void print_month_name(int);

@@ -16,14 +16,13 @@ class Calendar
 {
 	public:
 			Calendar();
-			~Calendar();
 			void print_year(int);
 			void print_month_name(int,int);
 			void print_month_grid(int year_index, int month_index);
 			void print_year_grid(int);
 
-	private:
             void delete_memory();
+	private:
             void ensure_cap(int);
 
 		    int num_years;
