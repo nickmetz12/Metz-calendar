@@ -118,12 +118,7 @@ void Calendar::ensure_cap(int desired_year)
 {
     if (desired_year > num_years)
     {
-        cerr << "entered if statementCalendar::ensure_cap\n";
-        // RECURSIVELY DELETE MEMORY
-        cerr << "\nvalue of num_years: " << num_years << endl << endl;
-        cerr << "about to enter delete_memory()\n";
         delete_memory();    
-        cerr << "just left from delete_memory()\n";
 
        
        
@@ -144,6 +139,5 @@ void Calendar::ensure_cap(int desired_year)
         {
             add_year(i, count_ptr);    
         }  
-        cerr << "exited if statement Calendar::ensure_cap\n";
     }
 }

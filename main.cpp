@@ -26,6 +26,7 @@ void month_grid_view(int* year_ptr, int* month_ptr, Calendar* cal_ptr);
 
 int main()
 {
+    cerr << "Hello World!\n";
 	Calendar calendar;
 	
 	commands(&calendar);
