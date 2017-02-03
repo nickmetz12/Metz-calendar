@@ -27,7 +27,28 @@ Value returned: None.
 */
 Year::~Year()
 {
-        delete[] months;
+    delete_months();
+}
+
+/*
+Purpose:    Deletes all allocated memory.
+Parameters: None.
+Returns:    None (void function).
+*/
+void Year::delete_months()
+{
+    delete[] months;
+}
+
+/*
+Purpose:    Deletes allocated memory of days and grid stored inside a 
+            particular month.
+Parameters: index determines the particular month
+Returns:    None
+*/
+void Year::delete_days_grid(int index)
+{
+    months[index].delete_days_grid();
 }
 
 /*

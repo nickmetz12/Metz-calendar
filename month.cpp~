@@ -42,10 +42,19 @@ Month::Month()
  */
 Month::~Month()
 {
-        delete[] days;
-	delete[] grid;
+    deletes_days_grid();
 }
 
+/*
+Purpose:    Frees allocated memory for of days and the grid.
+Parameters: None.
+Returns:    None (void function).
+*/
+void Month::delete_days_grid()
+{
+    delete[] days;
+	delete[] grid;
+}
 
 /*
  * Purpose:Determines number of days.

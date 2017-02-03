@@ -21,7 +21,12 @@ class Calendar
 			void print_month_name(int,int);
 			void print_month_grid(int year_index, int month_index);
 			void print_year_grid(int);
+
 	private:
+            void delete_memory();
+            void ensure_cap(int);
+
+		    int num_years;
 			void add_year(int, int*);
 			Year* years;
 };

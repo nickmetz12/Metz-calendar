@@ -31,9 +31,6 @@ class Month
 			void print_grid_unit(bool,int);
 			std::string get_month_name();
 
-			//int grid[7];
-
-
 	private:
 			void start_grid_nums(int);
 			

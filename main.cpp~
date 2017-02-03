@@ -1,7 +1,12 @@
 /*Nicholas Metzger
  * 8/4/16
  * main.cpp
- * Main file which organizes program.
+ * 
+ * Calendar Program
+ *
+ * Organizes the components of the calendar program in order to print to the
+ * terminal a grid view of a specified calendar year from years 1 - 3000
+ * with months and correct days of the week.
  */
 
 #include <iostream>
@@ -78,7 +83,7 @@ void year_grid_view(int* year_ptr, bool* first_year_made_ptr,
 {
 		cin >> *year_ptr;
 		
-		if (*year_ptr < 1 || *year_ptr > 3000)
+		if (*year_ptr < 1)
 				cout << "\nOut of bounds\n";
 		else
 		{
@@ -97,9 +102,6 @@ void next_year(int *year_ptr, Calendar* cal_ptr)
 {
 	if (*year_ptr == -1)
 		cout << "\nNo current year\n";
-
-	else if (*year_ptr+1 > 3000)
-		cout << "\nOut of bounds\n";
 
 	else
 		cal_ptr->print_year_grid(++(*year_ptr));
@@ -136,8 +138,7 @@ void month_grid_view(int* year_ptr, int* month_ptr, Calendar* cal_ptr)
 	{
 		cin >> *month_ptr;
 			
-		if (*year_ptr < 1 || *year_ptr > 3000 || *month_ptr < 1 
-                                                || *month_ptr > 12)
+		if (*year_ptr < 1 || *month_ptr < 1 || *month_ptr > 12)
 		{
 			cout << "\nOut of bounds\n";
 		}

@@ -24,6 +24,8 @@ class Year
 			void print_year_grid();
 	
 	private:
+            void delete_months();
+
 			void set_months(int*);
 			bool determine_leap_year();
 			void print_month_heading(int);

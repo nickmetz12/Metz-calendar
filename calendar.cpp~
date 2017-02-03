@@ -17,14 +17,14 @@ using namespace std;
  */
 Calendar::Calendar()
 {
-        int NUM_YEARS = 3000;
-	years = new Year[NUM_YEARS];
+    num_years = 2100;
+	years = new Year[num_years];
 	
 	int count = 1;
 	int* count_ptr = &count;
 
         
-	for (int i=0; i < NUM_YEARS; i++)
+	for (int i=0; i < num_years; i++)
 	{
 			add_year(i, count_ptr);
 	}
@@ -37,7 +37,26 @@ Value returned; None.
 */
 Calendar::~Calendar()
 {
-	delete[] years;
+    delete_memory();
+}
+
+
+/*
+Purpose:    Deletes all allocated memory.
+Parameters: None.
+Returns:    None (void function).
+*/
+void Calendar::delete_memory()
+{
+    for (int i = 0; i < num_years; i++)
+    {
+        for (int j = 0; j < 12; j++)
+        {
+            years[i].delete_days_grid(j);
+        }
+        years[i].delete_months();
+    }
+    delete[] years;
 }
 
 
@@ -95,6 +114,39 @@ void Calendar::print_month_grid(int year_index, int month_index)
  */
 void Calendar::print_year_grid(int i)
 {
-	//-1 because years array starts at 0
+	ensure_cap(i);
+
+    //-1 because years array starts at 0
 	years[i-1].print_year_grid();
+}
+
+/*
+ * Purpose:     Expands the array of years if necessary.
+ * Parameters:  None.
+ * Returns:     None (void function).
+ */
+void Calendar::ensure_cap(int desired_year)
+{
+    if (desired_year > num_years)
+        // RECURSIVELY DELETE MEMORY
+
+        if (num_years * 2 < desired_year)
+        {
+            num_years = desired_year * 2;
+        }  
+        else {
+            num_years = num_years * 2;
+        }
+        
+        delete_memory();    
+        years = new Year[num_years];
+
+        int count = 1;
+	    int* count_ptr = &count;
+
+        for (int i = 0; i < num_years; i++)
+        {
+            add_year(i, count_ptr);    
+        }   
+
 }

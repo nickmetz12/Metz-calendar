@@ -83,7 +83,7 @@ void year_grid_view(int* year_ptr, bool* first_year_made_ptr,
 {
 		cin >> *year_ptr;
 		
-		if (*year_ptr < 1 || *year_ptr > 3000)
+		if (*year_ptr < 1)
 				cout << "\nOut of bounds\n";
 		else
 		{
@@ -102,9 +102,6 @@ void next_year(int *year_ptr, Calendar* cal_ptr)
 {
 	if (*year_ptr == -1)
 		cout << "\nNo current year\n";
-
-	else if (*year_ptr+1 > 3000)
-		cout << "\nOut of bounds\n";
 
 	else
 		cal_ptr->print_year_grid(++(*year_ptr));
@@ -141,8 +138,7 @@ void month_grid_view(int* year_ptr, int* month_ptr, Calendar* cal_ptr)
 	{
 		cin >> *month_ptr;
 			
-		if (*year_ptr < 1 || *year_ptr > 3000 || *month_ptr < 1 
-                                                || *month_ptr > 12)
+		if (*year_ptr < 1 || *month_ptr < 1 || *month_ptr > 12)
 		{
 			cout << "\nOut of bounds\n";
 		}
@@ -162,7 +158,7 @@ void month_grid_view(int* year_ptr, int* month_ptr, Calendar* cal_ptr)
 void print_options()
 {
 	cout << "Input options (please input number): \n\n" 
-		<< "\t1) year grid view (input <year> between 1 and 3000)\n\n" 
+		<< "\t1) year grid view (input <year> > 0)\n\n" 
 		<< "\t2) next year\n\n"
 	   	<< "\t3) previous year\n\n" 
 		<< "\t4) month in current year (input <month>)\n\n"

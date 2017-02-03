@@ -30,6 +30,7 @@ class Month
 			void print_grid_row(bool,int);
 			void print_grid_unit(bool,int);
 			std::string get_month_name();
+            void delete_days_grid();
 
 	private:
 			void start_grid_nums(int);
