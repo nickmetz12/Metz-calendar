@@ -47,6 +47,30 @@ void Month::delete_days_grid()
 }
 
 /*
+Purpose:    Creates an event for a certain day.
+Parameters: None.
+Returns:    None (void function).
+*/
+void Month::create_event()
+{
+    int day = -1;
+    cin >> day;
+
+    cerr << "Entered day is " << day << endl;
+    if (day > 0 && day - 1 < number_days)
+    {
+        //-1, because day d = days[d-1]
+        days[day-1].create_event();
+    }
+
+    else
+    {
+        cerr << "Day entered must be between 1 and " << number_days << 
+                " inclusive\n";
+    }
+}
+
+/*
  * Purpose:Determines number of days.
  * Parameters:None.
  * Value returned:int, the number of days.
@@ -151,7 +175,8 @@ void Month::start_grid_nums(int start_index)
 	{
 		//+1, because starts on day 1
 		grid[start_index].day = i+1;
-		grid[start_index++].valid = true;
+		grid[start_index].valid = true;
+        grid[start_index++].has_event = days[i].get_has_event();
 	}
 }
 
@@ -199,7 +224,12 @@ void Month::print_grid_unit(bool month_grid, int j)
 {
 	if (grid[j].valid)
 	{
-		cout << grid[j].day << "  ";
+		cout << grid[j].day;
+        if (grid[j].has_event)
+            cout << "* ";
+        else
+            cout << "  ";
+
 		//aesthetics purposes
 		if (grid[j].day < 10)
 			cout << " ";

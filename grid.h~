@@ -10,8 +10,8 @@
 
 struct Grid
 {
-	int day = -1;
-	bool valid = false;
+	int day;
+	bool valid;
 };
 
 #endif /*GRID_H*/

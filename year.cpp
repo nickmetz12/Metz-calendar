@@ -21,6 +21,46 @@ Year::Year()
 }
 
 /*
+Purpose: Updates the year and determines determines if leap year.
+Parameters: int i is the new year. int* count_ptr determines the
+			day of the week.
+Value Returned: None (void function).
+ */
+void Year::update_year(int i, int *count_ptr)
+{
+	//start with year 1
+	year_num = i+1;
+	bool is_leap_year = determine_leap_year();
+
+	if (is_leap_year)
+		months[1].set_leap_year();
+	
+	set_months(count_ptr);
+}
+
+/*
+Purpose:    Creates an event to be stored in the correct day.
+Parameters: month is the numeral value of a month.
+Returns:    None (void function).
+*/
+void Year::create_event()
+{
+    int month = -1;
+    cin >> month;
+
+    cerr << "Entered month is " << month << endl;
+    if (month >= 1 && month <= 12)
+    {
+        //-1, because month m stored in months[m-1]
+        months[month-1].create_event();
+    }
+    else
+    {
+        cerr << "Month must be between 1 and 12 inclusive\n";
+    }   
+
+}
+/*
 Purpose:    Deletes all allocated memory.
 Parameters: None.
 Returns:    None (void function).
@@ -42,23 +82,6 @@ void Year::delete_days_grid(int index)
     months[index].delete_days_grid();
 }
 
-/*
-Purpose: Updates the year and determines determines if leap year.
-Parameters: int i is the new year. int* count_ptr determines the
-			day of the week.
-Value Returned: None (void function).
- */
-void Year::update_year(int i, int *count_ptr)
-{
-	//start with year 1
-	year_num = i+1;
-	bool is_leap_year = determine_leap_year();
-
-	if (is_leap_year)
-		months[1].set_leap_year();
-	
-	set_months(count_ptr);
-}
 
 /*
  * Purpose: Sets the months in the year.

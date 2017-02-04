@@ -16,9 +16,9 @@ class Year
 {
 	public:
 			Year();
-			//~Year();
 			void update_year(int, int*);
-			void print_year();
+			void create_event(int);
+            void print_year();
 			void print_month_name(int);
 			void print_month_grid(int);
 			void print_year_grid();

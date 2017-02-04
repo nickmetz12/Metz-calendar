@@ -12,6 +12,7 @@ struct Grid
 {
 	int day;
 	bool valid;
+    bool has_event;
 };
 
 #endif /*GRID_H*/

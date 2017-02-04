@@ -48,6 +48,27 @@ void Calendar::delete_memory()
     delete[] years;
 }
 
+/*
+Purpose:    Creates an event on a specific day.
+Parameters: None.
+Returns:    None (void function).
+*/
+void Calendar::create_event()
+{
+    int year = -1;
+    cin >> year;
+
+    ensure_cap(year);
+
+    if (year > 0)
+    {
+        years[year-1].create_event();
+    }
+    else
+    {
+        cerr << "Year must be > 0\n";
+    }
+}
 
 /*
  * Purpose: Adds a year to the list of years.
@@ -119,8 +140,6 @@ void Calendar::ensure_cap(int desired_year)
     if (desired_year > num_years)
     {
         delete_memory();    
-
-       
        
         if (num_years * 2 < desired_year)
         {

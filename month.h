@@ -18,7 +18,8 @@ class Month
 	public:
 			Month();
 			void update_month(int, std::string, int*, int);
-			void print_month_num();
+			void create_event();
+            void print_month_num();
 			void print_month_name();
 			void set_leap_year();
 			int determine_num_days();

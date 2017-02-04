@@ -17,7 +17,6 @@ class Month
 {
 	public:
 			Month();
-//			~Month();
 			void update_month(int, std::string, int*, int);
 			void print_month_num();
 			void print_month_name();

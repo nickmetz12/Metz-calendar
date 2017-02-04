@@ -22,11 +22,10 @@ void year_grid_view(int* year_ptr, bool* first_year_made_ptr,
 void next_year(int *year_ptr, Calendar* cal_ptr);
 void prev_year(int* year_ptr, Calendar* cal_ptr);
 void month_grid_view(int* year_ptr, int* month_ptr, Calendar* cal_ptr);
-
+void create_event(Calendar*);
 
 int main()
 {
-    cerr << "Hello World!\n";
 	Calendar calendar;
 	
 	commands(&calendar);
@@ -64,7 +63,10 @@ void commands(Calendar* cal_ptr)
 		else if (command == 4)
 			month_grid_view(&year, &month, cal_ptr);
 
-		else if (command == 5)
+        else if (command == 5)
+            create_event(cal_ptr);
+
+		else if (command == 6)
 			done = true;
 		
 		else //not valid command
@@ -151,6 +153,15 @@ void month_grid_view(int* year_ptr, int* month_ptr, Calendar* cal_ptr)
 	}
 }
 
+/*
+Purpose:    Creates a new event and stores it in the correct day.
+Parameters: None.
+Returns:    None (void function).
+*/
+void create_event(Calendar *cal_ptr)
+{
+    cal_ptr->create_event();
+}
 
 /*
  * Purpose: Prints options.
@@ -159,10 +170,11 @@ void month_grid_view(int* year_ptr, int* month_ptr, Calendar* cal_ptr)
  */
 void print_options()
 {
-	cout << "Input options (please input number): \n\n" 
-		<< "\t1) year grid view (input <year> > 0)\n\n" 
-		<< "\t2) next year\n\n"
-	   	<< "\t3) previous year\n\n" 
-		<< "\t4) month in current year (input <month>)\n\n"
-	   	<< "\t5) quit\n";
+	cout << "Input options\n\n" 
+		<< "\tyear grid view        <1> <year> (year > 0)\n\n" 
+		<< "\tnext year             <2>\n\n"
+	   	<< "\tprevious year         <3>\n\n" 
+		<< "\tmonth in current year <4> <month_num>\n\n"
+	   	<< "\tcreate event          <5> <year> <month> <day>\n\n"
+        << "\tquit                  <6>\n";
 }
