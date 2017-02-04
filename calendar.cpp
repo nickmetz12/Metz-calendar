@@ -119,8 +119,6 @@ void Calendar::ensure_cap(int desired_year)
     if (desired_year > num_years)
     {
         delete_memory();    
-
-       
        
         if (num_years * 2 < desired_year)
         {
