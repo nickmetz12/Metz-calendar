@@ -30,7 +30,7 @@ class Event {
         void set_time_end(int);
         void set_all_day(bool);
         void set_notes(string);
-
+        void copy_event(Event *);
     private:
         void update_string_comp(string *);
         void update_time();

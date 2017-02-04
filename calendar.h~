@@ -16,6 +16,7 @@ class Calendar
 {
 	public:
 			Calendar();
+            void create_event();
 			void print_year(int);
 			void print_month_name(int,int);
 			void print_month_grid(int year_index, int month_index);

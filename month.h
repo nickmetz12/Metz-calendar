@@ -19,6 +19,8 @@ class Month
 			Month();
 			void update_month(int, std::string, int*, int);
 			void create_event();
+            void copy_events(Month *);
+            Day* get_day(int);
             void print_month_num();
 			void print_month_name();
 			void set_leap_year();

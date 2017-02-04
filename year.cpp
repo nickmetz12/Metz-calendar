@@ -60,6 +60,30 @@ void Year::create_event()
     }   
 
 }
+
+/*
+Purpose:    Copies the events from another year.
+Parameters: The pointer to another instance of a year.
+Returns:    None (void function).
+*/
+void Year::copy_events(Year *orig)
+{
+    for (int i = 0; i < 12; i++)
+    {
+        months[i].copy_events(orig->get_month(i));
+    }
+}
+
+/*
+Purpose:    Returns the address of certain month.
+Parameters: The index specifying the month.
+Returns:    Pointer to month.
+*/
+Month *Year::get_month(int i)
+{
+    return &(months[i]);
+}
+
 /*
 Purpose:    Deletes all allocated memory.
 Parameters: None.

@@ -42,6 +42,20 @@ void Event::update_event()
 }
 
 /*
+Purpose:    Copies the data from another event.
+Parameters: Event *orig
+Returns:    None (void function).
+*/
+void Event::copy_event(Event *orig)
+{
+    name = orig->get_name();
+    time_start = orig->get_time_start();
+    time_end = orig->get_time_end();
+    all_day = orig->get_all_day();
+    notes = orig->get_notes(); 
+}
+
+/*
 Purpose:    Updates a string field of an Event.
 Parameters: A pointer to the string data to be updated.
 Returns:    None (void function).

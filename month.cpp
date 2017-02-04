@@ -79,6 +79,32 @@ void Month::create_event()
 }
 
 /*
+Purpose:    Copies the events from a certain month.
+Parameters: Pointer to the month to be copied from.
+Returns:    None (void function).
+*/
+void Month::copy_events(Month *orig)
+{
+    for (int i = 0; i < number_days; i++)
+    {
+        days[i].copy_events(orig->get_day(i));
+        Day* day = orig->get_day(i);
+        if (day->get_has_event())
+            days[i].set_has_event();
+    }
+}
+
+/*
+Purpose:    Gets the address of a certain day.
+Parameters: The index specifying the day.
+Returns:    The pointer to a day.
+*/
+Day* Month::get_day(int i)
+{
+    return &(days[i]);
+}
+
+/*
  * Purpose:Determines number of days.
  * Parameters:None.
  * Value returned:int, the number of days.

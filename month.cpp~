@@ -44,7 +44,7 @@ void Month::delete_days_grid()
 {
     for (int i = 0; i < number_days; i++)
     {
-        if (days[i].has_event)
+        if (days[i].get_has_event())
         {
             days[i].delete_memory();
         }
@@ -76,6 +76,31 @@ void Month::create_event()
         cerr << "Day entered must be between 1 and " << number_days << 
                 " inclusive\n";
     }
+}
+
+/*
+Purpose:    Copies the events from a certain month.
+Parameters: Pointer to the month to be copied from.
+Returns:    None (void function).
+*/
+void Month::copy_events(Month *orig)
+{
+    for (int i = 0; i < number_days; i++)
+    {
+        days[i].copy_events(orig->get_day(i));
+        if (orig->get_has_event())
+            days[i].set_has_event();
+    }
+}
+
+/*
+Purpose:    Gets the address of a certain day.
+Parameters: The index specifying the day.
+Returns:    The pointer to a day.
+*/
+Day* Month::get_day(int i)
+{
+    return &(days[i]);
 }
 
 /*

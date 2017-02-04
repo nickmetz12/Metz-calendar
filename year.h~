@@ -17,7 +17,8 @@ class Year
 	public:
 			Year();
 			void update_year(int, int*);
-			void create_event(int);
+			void create_event();
+            void copy_events(Year *); 
             void print_year();
 			void print_month_name(int);
 			void print_month_grid(int);

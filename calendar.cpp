@@ -134,7 +134,7 @@ void Calendar::print_year_grid(int i)
  * Purpose:     Expands the array of years if necessary.
  * Parameters:  None.
  * Returns:     None (void function).
- */
+ 
 void Calendar::ensure_cap(int desired_year)
 {
     if (desired_year > num_years)
@@ -159,4 +159,54 @@ void Calendar::ensure_cap(int desired_year)
             add_year(i, count_ptr);    
         }  
     }
+}*/
+
+
+void Calendar::ensure_cap(int desired_year)
+
+{
+    if (desired_year > num_years)
+    {
+        cerr << "Expanding the array of years\n";
+        int new_size = -1;
+        if (num_years * 2 < desired_year)
+        {
+            new_size = desired_year * 2;
+        }  
+        else {
+            new_size = num_years * 2;
+        }
+
+        Year *temp_years = new Year[new_size];
+        
+        int count = 1;
+	    int* count_ptr = &count;
+
+        for (int i = 0; i < new_size; i++)
+        {
+            temp_years[i].update_year(i, count_ptr);    
+        }  
+
+        for (int i = 0; i < num_years; i++)
+        {
+            temp_years[i].copy_events(get_year(i));
+        }
+
+        delete_memory();    
+       
+        years = temp_years;
+        
+        num_years = new_size;                
+
+    }
+}
+
+/*
+Purpose:    Gets address of specific year.
+Parameters: int is is index of specific year.
+Returns:    address of year
+*/
+Year* Calendar::get_year(int i)
+{
+    return &(years[i]);
 }

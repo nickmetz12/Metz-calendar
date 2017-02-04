@@ -55,6 +55,37 @@ void Day::create_event()
 }
 
 /*
+Purpose:    Copies the events from a certain day.
+Parameters: The address of the day to be copied from.
+Returns:    None (void function).
+*/
+void Day::copy_events(Day *orig)
+{
+    for (int i = 0; i < orig->get_num_events(); i++)
+    {
+        ensure_cap();
+        events[i].copy_event(orig->get_event(i));
+        cerr << "COPY OF EVENT WORKED "<<events[i].get_name() << endl;
+    }
+}
+
+void Day::set_has_event()
+{
+    has_event = true;
+}
+
+/*
+Purpose:    Returns the address to an event.
+Parameters: Index specifying which event.
+Returns:    Address to event.
+*/
+Event* Day::get_event(int i)
+{
+    return &(events[i]);
+}
+
+
+/*
 Purpose:    Expands the array of 
 Parameters: None.
 Returns:    None (void function).
@@ -77,7 +108,7 @@ void Day::ensure_cap()
         if (events != NULL)
             delete[] events;
         events = new_array;
-        cap_events *= 2;
+        cap_events = 2 * (cap_events + 1);
     }
 }
 
@@ -132,4 +163,14 @@ Returns:    The bool has_event.
 bool Day::get_has_event()
 {
     return has_event;
+}
+
+/*
+Purpose:    Returns the number of events.
+Parameters: None.   
+Returns:    None (void function).
+*/
+int Day::get_num_events()
+{
+    return num_events;
 }

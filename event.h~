@@ -33,6 +33,7 @@ class Event {
 
     private:
         void update_string_comp(string *);
+        void update_time();
 
         string name;
         int time_start;

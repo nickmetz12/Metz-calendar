@@ -17,11 +17,15 @@ class Day
 			Day();
             void delete_memory();
 			void create_event();
+            void copy_events(Day *);
             void update_day(int ,std::string);
 			void print_day_num();
 			void print_day_name();
+            void set_has_event();
 			std::string get_day_name();
             bool get_has_event();
+            int get_num_events();
+            Event* get_event(int);
 	private:
             void ensure_cap();
 
