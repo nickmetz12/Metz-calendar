@@ -27,6 +27,16 @@ Day::Day()
 }
 
 /*
+Purpose:    Frees all allocated memory regarding events.
+Parameters: None.
+Returns:    None (void function).
+*/
+void Day::delete_memory()
+{
+    delete[] events;
+}
+
+/*
 Purpose:    Creates an event in this day.
 Parameters: None.
 Returns:    None (void function).

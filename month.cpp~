@@ -42,6 +42,14 @@ Returns:    None (void function).
 */
 void Month::delete_days_grid()
 {
+    for (int i = 0; i < number_days; i++)
+    {
+        if (days[i].has_event)
+        {
+            days[i].delete_memory();
+        }
+    }
+
     delete[] days;
 	delete[] grid;
 }
@@ -176,7 +184,7 @@ void Month::start_grid_nums(int start_index)
 		//+1, because starts on day 1
 		grid[start_index].day = i+1;
 		grid[start_index].valid = true;
-        grid[start_index].has_event = days[i].get_has_event();
+        grid[start_index++].has_event = days[i].get_has_event();
 	}
 }
 

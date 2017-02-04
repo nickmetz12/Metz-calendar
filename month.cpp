@@ -42,6 +42,14 @@ Returns:    None (void function).
 */
 void Month::delete_days_grid()
 {
+    for (int i = 0; i < number_days; i++)
+    {
+        if (days[i].get_has_event())
+        {
+            days[i].delete_memory();
+        }
+    }
+
     delete[] days;
 	delete[] grid;
 }

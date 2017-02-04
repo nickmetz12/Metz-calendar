@@ -15,6 +15,7 @@ class Day
 {
 	public:
 			Day();
+            void delete_memory();
 			void create_event();
             void update_day(int ,std::string);
 			void print_day_num();

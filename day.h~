@@ -15,12 +15,13 @@ class Day
 {
 	public:
 			Day();
+            delete_memory();
 			void create_event();
             void update_day(int ,std::string);
 			void print_day_num();
 			void print_day_name();
 			std::string get_day_name();
-
+            bool get_has_event();
 	private:
             void ensure_cap();
 

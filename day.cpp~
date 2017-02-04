@@ -27,6 +27,17 @@ Day::Day()
 }
 
 /*
+Purpose:    Frees all allocated memory regarding events.
+Parameters: None.
+Returns:    None (void function).
+*/
+void Day::delete_memory()
+{
+
+
+}
+
+/*
 Purpose:    Creates an event in this day.
 Parameters: None.
 Returns:    None (void function).
@@ -115,9 +126,9 @@ string Day::get_day_name()
 }
 
 /*
-Purpose:
-Parameters:
-Returns:
+Purpose:    Gets has_event.
+Parameters: None.
+Returns:    The bool has_event.
 */
 bool Day::get_has_event()
 {
